@@ -7,6 +7,7 @@ doc = """
 Introduction
 """
 
+
 class Constants(BaseConstants):
     name_in_url = 'task_2'
     players_per_group = 2

@@ -150,6 +150,7 @@ class Call3(Page):
             if player.id_in_group == 2:
                 return {5: data}
 
+
 class Preferences2(Page):
     form_model = 'player'
     form_fields = ['pref1', 'pref2', 'pref3', 'pref4', 'pref5', 'pref6']
@@ -170,6 +171,14 @@ class Preferences2(Page):
         return dict(
             order=order,
             p1 = p1, p2 = p2, p3=p3, p4=p4, p5=p5, p6=p6, self=self)
+
+    @staticmethod
+    def js_vars(player: Player):
+        return dict(
+            order=player.participant.order,
+            number=player.id_in_group
+        )
+
 
 class WaitPage3(WaitPage):
     @staticmethod
@@ -254,6 +263,7 @@ class WaitPage3(WaitPage):
                 if team3[1] or team3[0] ==p.id_in_group:
                     participant.team_name = "team2_s" + str(p.group.id_in_subsession)
                     print(participant.team_name)
+
 
 class Last(Page):
     pass

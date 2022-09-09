@@ -2,51 +2,103 @@
 {{ block content }}
 
 
-{{ for number in order }}
-    {{ if number == 1 }}
-        the number is {{ number }}
-        this is player 1
-        {{ p1.name }}
-        {{ formfield 'pref1' }}
-    {{ endif }}
-<br>
-    {{ if number == 2 }}
-        this is player 2
-        {{ p2.name }}
-        {{ formfield 'pref2' }}
-    {{ endif }}
-<br>
-    {{ if number == 3 }}
-        this is player 3
-        {{ p3.name }}
-        {{ formfield 'pref3' }}
-    {{ endif }}
-<br>
-    {{ if  number == 4}}
-        this is player 4
-        {{ p4.name }}
-        {{ formfield 'pref4' }}
+<style type="text/css">
+.flex-container {
 
-    {{ endif }}
+  display: flex;
 
-<br>
-    {{ if number == 5 }}
-        this is player 5
-        {{ p5.name }}
-        {{ formfield 'pref5' }}
-    {{ endif }}
-<br>
-    {{ if number == 6 }}
-        this is player 6
-        {{ p6.name }}
-        {{ formfield 'pref6' }}
-    {{ endif }}
+
+  flex-flow: nowrap;
+
+
+  justify-content: space-around;
+
+  padding: 0;
+  margin: 0;
+  background: yellow;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 10px;
+  width: 500px;
+  height: 200px;
+  margin-top: 10px;
+  line-height: 50px;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+</style>
+
+<ul class="flex-container">
+
+        <li class="flex-item" id="item1">
+            this is player 1
+            {{ p1.name }}
+            {{ formfield 'pref1' }}
+        </li>
+
+       <li class="flex-item" id="item2">
+            this is player 2
+            {{ p2.name }}
+            {{ formfield 'pref2' }}
+       </li>
+
+        <li class="flex-item" id="item3">
+            this is player 3
+            {{ p3.name }}
+            {{ formfield 'pref3' }}
+        </li>
+
+
+        <li class="flex-item" id="item4">
+            this is player 4
+            {{ p4.name }}
+            {{ formfield 'pref4' }}
+        </li>
+
+
+        <li class="flex-item" id="item5">
+            this is player 5
+            {{ p5.name }}
+            {{ formfield 'pref5' }}
+        </li>
+
+
+        <li class="flex-item" id="item6">
+            this is player 6
+            {{ p6.name }}
+            {{ formfield 'pref6' }}
+        </li>
+
+
+</ul>
+
 
     <td><input  type="hidden" name="pref{{self}}" id="pref{{self}}" value="0"></td>
 
-{{ endfor }}
 
+<br>
 <button class="otree-btn-next btn btn-primary">Next</button>
+
+
+<script>
+
+    let order = js_vars.order;
+    let number = js_vars.number;
+
+    ownid = "item" + number;
+    document.getElementById(ownid).style.display = "none";
+
+    for (let i = 1; i < 7; i++) {
+        id = "item" + order[i];
+        document.getElementById(id).style.order = i
+    };
+
+
+</script>
 
 {{ endblock }}
 
